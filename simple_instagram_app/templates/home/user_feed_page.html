@@ -1,0 +1,97 @@
+
+{% extends "base.html" %}
+
+{% load wagtailimages_tags wagtailcore_tags %}
+
+{% block body_class %}template-blogpage{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://bootswatch.com/4/superhero/bootstrap.min.css"  crossorigin="anonymous">
+    <style>
+        .container {
+            width: 25rem;
+            height: 100%;
+            margin: 0 1rem;
+            position: relative;
+        }
+        .searchbar {
+            font-size: 2.4rem;
+            width: 25rem;
+            height: 5rem;
+            border: none;
+            outline: none;
+            border-radius: 10rem;
+            padding: 2rem;
+            transition: all 0.1s;
+            transition-delay: 0.1s;
+        }
+        .searchbar:hover {
+            width: 27rem;
+            height: 6rem;
+        }
+        .button {
+            height: 2rem;
+            position: absolute;
+            top: 1.5rem;
+            right: 1rem;
+            transition: all 0.1s;
+            transition-delay: 0.1s;
+        }
+        .button:hover {
+            cursor: pointer;
+        }
+        .searchbar:hover + .button {
+            height: 2.5rem;
+            top: 1.8rem;
+            right: 0;
+        }
+        .searchbar::placeholder {
+            opacity: 0.3;
+        }
+    </style>
+</head>
+{% block content %}
+
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="card-title">
+                <div class="col-12 col-md-10 col-lg-8">
+                    <form class="card card-sm">
+                        <div class="card-body row no-gutters align-items-center">
+                            <div class="col-auto">
+                                <i class="glyphicon glyphicon-search col-xs-1"></i>
+                            </div>
+                            <!--end of col-->
+                            <div class="col">
+                                <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search for users or tags">
+                            </div>
+                            <!--end of col-->
+                            <!-- <div class="col-auto">
+                                <button class="btn btn-lg btn-success" type="submit">Search</button>
+                            </div> -->
+                            <!--end of col-->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="20" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
+        <rect width="100%" height="100%" fill="#868e96"></rect>
+        
+        </svg>
+        <div class="card-body">
+            <div class="row my-3">
+                <div class="col-md-3">
+                    {% for block in self.body %}
+                        {% include_block block %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-muted">
+        2 days ago
+        </div>
+    </div>
+{% endblock %}
+</html>

@@ -1,0 +1,46 @@
+
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-blogpage{% endblock %}
+
+{% block content %}
+    {% image self.avatar width-1500 as img %}
+        <div class="container">
+            
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="card-title">
+                        <div>
+                            <img class="rounded-circle" alt="Image" style="width:200px ;height:100px" src="{{img.url}}">
+                            <!-- <svg class="icon icon-link w-panel__icon" aria-hidden="true"><use href="#icon-link"></use></svg> -->
+                            <span style="margin-left: 20px;">{{request.user.first_name}}</span>
+                            <span style="margin-left: 10px;">{{request.user.last_name}}</span>
+                            <span style="margin-left: 400px;">Photos: <span class="badge bg-primary rounded-pill">3</span></span>
+                            <div>
+                                <span style="margin-left: 220px;">{{page.bio}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="20" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
+                <rect width="100%" height="100%" fill="#868e96"></rect>
+                
+                </svg>
+                <div class="card-body">
+                    <div class="row my-3">
+                        <div class="col-md-3">
+                            {% for block in self.body %}
+                                {% include_block block %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-muted">
+                2 days ago
+                </div>
+            </div>
+            
+        </div>
+
+{% endblock %}

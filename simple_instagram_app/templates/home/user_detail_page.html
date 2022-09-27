@@ -1,0 +1,28 @@
+
+{% extends "base.html" %}
+
+{% load wagtailimages_tags wagtailcore_tags %}
+
+{% block body_class %}template-blogpage{% endblock %}
+
+{% block content %}
+    {% image self.photo_details width-400 as img %}
+    <div class="container">
+        <h1 class="mt-3" style="margin-left: 400px;"> Welcome to {{ page.title }} Page</h1>
+        <div class="card mb-3">
+            <div class="card-body">
+                <img class="" alt="Image"  src="{{img.url}}">
+            
+                <div class="ml-2 mt-5 mb-5">
+                    <div class="col">
+                        <div class="col-md-6 offset-md-3">  
+                            {% for block in page.body %}
+                                {% include_block block %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
