@@ -120,7 +120,6 @@ class PhotoPage(Page):
     body = StreamField([
         ('photo_page', ImageChooserBlock(required=False)),
     ], verbose_name='Contenu')
-
     content_panels = Page.content_panels + [
         StreamFieldPanel('body', classname="full"),
     ]

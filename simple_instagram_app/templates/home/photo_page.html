@@ -1,12 +1,11 @@
 
 {% extends "base.html" %}
-{% load static wagtailcore_tags %}
+{% load wagtailcore_tags %}
+<div class="row my-3">
+    <div class="col-md-4">
+        {% for block in self.body %}
+            {% include_block block %}
+        {% endfor %}
+    </div>
 
-{% block body_class %}template-classicpage{% endblock %}
-
-{% block content %}
-    <h1>{{ page.title }}</h1>
-    {% for block in page.body %}
-        {% include_block block %}
-    {% endfor %}
-{% endblock content %}
+</div>

@@ -46,12 +46,18 @@
                         <span class="sr-only">(current)</span>
                         </a>
                     </li>
-                  
+                </ul>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/admin/"> Portal
+                        <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        {% if request.user.is_authenticated %}
-                        Salut {{request.user.username}}
+                        {% if request.user.is_authenticated %} 
+                        {{request.user.first_name}} {{request.user.last_name}}
                             <a class="nav-link d-inline" href="{% url 'account_logout' %}">Logout?</a>
                         {% else%}
                             <a class="nav-link d-inline" href="{% url 'account_login' %}">Login?</a>
